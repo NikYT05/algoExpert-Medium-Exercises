@@ -21,3 +21,35 @@ export function threeNumberSum(array: number[], targetSum: number): Triplet[] {
   }
   return combos;
 }
+
+
+/*zerosumSubarray - Given an array, check if it contains a subarray that sums up to zero*/
+export function zeroSumSubarray(nums: number[]) {
+
+  if (nums.length == 1){
+    if (nums[0] === 0){
+      return true;
+    } else {
+      return false;
+    }
+
+
+  }
+  let sum = 0;
+  let sums: number[] = []
+  for (let i = 0; i < nums.length; i ++){
+      sum += nums[i];
+      sums.push(sum);
+  }
+
+  for (let i = 0; i < sums.length - 1; i++){
+      for (let j = i + 1; j < sums.length ; j ++){
+          if (sums[i] === sums[j] || sums[i] === 0 || sums[j] === 0){
+              return true;
+          } else {
+              continue;
+          }
+      }
+  }
+  return false;
+}
